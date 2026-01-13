@@ -47,6 +47,19 @@
             cursor: pointer;
         }
 
+        .purple-button {
+            background-color: #9b59b6; /* Purple */
+            box-shadow: 0 9px #8e44ad; /* Darker purple for 3D effect */
+        }
+
+        .purple-button:hover {
+            box-shadow: 0 7px #8e44ad;
+        }
+
+        .purple-button:active {
+            box-shadow: 0 0 #8e44ad;
+        }
+
         .green-button {
             background-color: #2ecc71; /* Green */
             box-shadow: 0 9px #27ae60; /* Darker green for 3D effect */
@@ -107,11 +120,13 @@
     <div class="button-container">
         <button id="helloButton">Click me</button>
         <button id="dontClickButton" class="green-button">Don't click</button>
+        <button id="purpleButton" class="purple-button">Turn Blue</button>
     </div>
 
     <script>
         const helloButton = document.getElementById('helloButton');
         const dontClickButton = document.getElementById('dontClickButton');
+        const purpleButton = document.getElementById('purpleButton');
         const card = document.getElementById('helloCard');
         const closeButton = document.getElementById('closeCard');
         const body = document.body;
@@ -126,6 +141,14 @@
             setTimeout(() => {
                 body.style.backgroundColor = originalBackgroundColor;
             }, 5000);
+        });
+
+        purpleButton.addEventListener('click', () => {
+            body.style.backgroundColor = 'blue';
+            setTimeout(() => {
+                body.style.backgroundColor = originalBackgroundColor;
+                purpleButton.style.display = 'none';
+            }, 3000);
         });
 
         closeButton.addEventListener('click', () => {
