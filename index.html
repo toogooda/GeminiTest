@@ -47,6 +47,25 @@
             cursor: pointer;
         }
 
+        .green-button {
+            background-color: #2ecc71; /* Green */
+            box-shadow: 0 9px #27ae60; /* Darker green for 3D effect */
+        }
+
+        .green-button:hover {
+            box-shadow: 0 7px #27ae60;
+        }
+
+        .green-button:active {
+            box-shadow: 0 0 #27ae60;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Add some space between the buttons */
+        }
+
         body {
             display: flex;
             justify-content: center;
@@ -54,6 +73,7 @@
             height: 100vh;
             margin: 0;
             font-family: sans-serif;
+            transition: background-color 0.5s ease; /* Smooth transition for background color */
         }
         button {
             background-color: #3498db; /* Blue */
@@ -84,15 +104,28 @@
         <p>Hello World</p>
     </div>
 
-    <button id="helloButton">Click me</button>
+    <div class="button-container">
+        <button id="helloButton">Click me</button>
+        <button id="dontClickButton" class="green-button">Don't click</button>
+    </div>
 
     <script>
-        const button = document.getElementById('helloButton');
+        const helloButton = document.getElementById('helloButton');
+        const dontClickButton = document.getElementById('dontClickButton');
         const card = document.getElementById('helloCard');
         const closeButton = document.getElementById('closeCard');
+        const body = document.body;
+        const originalBackgroundColor = window.getComputedStyle(body).backgroundColor;
 
-        button.addEventListener('click', () => {
+        helloButton.addEventListener('click', () => {
             card.style.display = 'block';
+        });
+
+        dontClickButton.addEventListener('click', () => {
+            body.style.backgroundColor = 'red';
+            setTimeout(() => {
+                body.style.backgroundColor = originalBackgroundColor;
+            }, 5000);
         });
 
         closeButton.addEventListener('click', () => {
