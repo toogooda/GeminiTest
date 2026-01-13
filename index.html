@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        .card {
+            display: none; /* Initially hidden */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        .card-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        button {
+            background-color: #3498db; /* Blue */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 9px #2980b9; /* Darker blue for 3D effect */
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            box-shadow: 0 7px #2980b9;
+            transform: translateY(2px);
+        }
+
+        button:active {
+            box-shadow: 0 0 #2980b9;
+            transform: translateY(9px);
+        }
+    </style>
+</head>
+<body>
+    <div id="helloCard" class="card" style="display: none;">
+        <span id="closeCard" class="close-btn">&times;</span>
+        <p>Hello World</p>
+    </div>
+
+    <button id="helloButton">Click me</button>
+
+    <script>
+        const button = document.getElementById('helloButton');
+        const card = document.getElementById('helloCard');
+        const closeButton = document.getElementById('closeCard');
+
+        button.addEventListener('click', () => {
+            card.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', () => {
+            card.style.display = 'none';
+        });
+
+        // Also close the card if user clicks outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target == card) {
+                card.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
